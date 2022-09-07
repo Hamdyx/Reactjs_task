@@ -1,0 +1,15 @@
+.footer {
+	padding: 3rem 6rem;
+	background: #fff;
+	@media (max-width: 1200px) {
+		padding: 0 2.125rem;
+	}
+	.social-section {
+		@include flex(center, space-between);
+		gap: 10px;
+		.social-links {
+			@include flex();
+			gap: 20px;
+		}
+	}
+}

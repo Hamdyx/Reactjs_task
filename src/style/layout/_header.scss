@@ -1,0 +1,49 @@
+.header {
+	background: #fff;
+	@include flex(center, center);
+	padding: 0 6rem;
+	height: 85px;
+	gap: 20px;
+	@media (max-width: 1200px) {
+		padding: 0 2.125rem;
+	}
+
+	& > .ant-menu {
+		justify-content: center;
+		text-transform: capitalize;
+		flex: 1;
+		border: 0;
+		.ant-menu-item {
+			padding: 0 0.75rem;
+			.ant-menu-title-content {
+				@include MainFont(14px, 24px, 0.2px, #737373);
+			}
+		}
+	}
+	& > .authenticate {
+		height: 100%;
+		display: flex;
+		gap: 10px;
+		font-size: 14px;
+		& > .ant-typography {
+			color: #23a6f0;
+		}
+		.login {
+			gap: 5px;
+		}
+	}
+	& > .actions {
+		display: flex;
+		gap: 10px;
+		& > .ant-typography {
+			color: #23a6f0;
+		}
+		.item {
+			padding: 0.25rem;
+			svg {
+				width: 1rem;
+				height: 1rem;
+			}
+		}
+	}
+}
