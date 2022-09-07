@@ -1,6 +1,13 @@
-# Getting Started with Create React App
+# E-commerce for Fashion
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+small e-commerce for Fashion.
+The user can search for a specific product and click on a particular product to view the details and the images.
+Then he can add the product to the cart, which will reflect in the number badge on the cart icon in the status bar.
+The user also can click on the filter button on the master page to sort by name or price.
+
+## Project Stack
+
+- React, Redux, Typescript, SCSS,
 
 ## Available Scripts
 
