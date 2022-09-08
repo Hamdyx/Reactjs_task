@@ -1,6 +1,7 @@
 import React from 'react';
 import { Breadcrumb, Layout, PageHeader } from 'antd';
-import { BreadcrumbSep } from '../icons/icons';
+import { BreadcrumbSep } from '../assets/icons/icons';
+import ShopItem from '../components/ShopItem';
 
 const ShopPage: React.FC = () => {
 	const cards = [1, 2, 3, 4, 5];
@@ -9,6 +10,7 @@ const ShopPage: React.FC = () => {
 		<Layout className="main-header">
 			<HeaderWithBreadcrumb />
 			<div className="shop-cards">{cardItems}</div>
+			<ShopItem />
 		</Layout>
 	);
 };

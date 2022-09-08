@@ -6,7 +6,7 @@ import {
 	Partner4,
 	Partner5,
 	Partner6,
-} from '../../../icons/icons';
+} from '../../../assets/icons/icons';
 
 const PartnersSection: React.FC = () => {
 	return (

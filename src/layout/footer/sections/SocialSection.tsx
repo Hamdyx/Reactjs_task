@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography } from 'antd';
-import { Facebook, Instagram, Twitter } from '../../../icons/icons';
+import { Facebook, Instagram, Twitter } from '../../../assets/icons/icons';
 
 const { Paragraph } = Typography;
 
