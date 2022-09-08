@@ -12,7 +12,7 @@ const ItemCard: React.FC<{ item: number }> = ({ item }) => {
 	const itemImg = `Item${item}`;
 	type ObjectKey = keyof typeof Images;
 	const img = itemImg as ObjectKey;
-
+	const colors = [1, 2, 3, 4].map((col) => <span key={col} />);
 	return (
 		<Card className="shop-items_card">
 			<img src={Images?.[img]} alt="" />
@@ -22,6 +22,7 @@ const ItemCard: React.FC<{ item: number }> = ({ item }) => {
 				<h5>$16.48</h5>
 				<h5>$6.48</h5>
 			</div>
+			<div className="colors">{colors}</div>
 		</Card>
 	);
 };

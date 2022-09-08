@@ -40,6 +40,7 @@
 @import '~antd/dist/antd.css';
 @import './layout/header';
 @import './layout/footer';
+@import './pages/shop';
 
 body {
 	margin: 0;
@@ -113,39 +114,6 @@ code {
 			}
 			p {
 				@include mainFont(14px, 20px, 0.2px, #fff);
-			}
-		}
-	}
-	.shop-items {
-		@include horizontalPadding();
-		@include verticalPadding(2rem, 2rem);
-		flex-direction: row;
-		flex-wrap: wrap;
-		background: #ffffff;
-		.ant-card {
-			border: 0;
-			.ant-card-body {
-				@include flex();
-				flex-direction: column;
-				gap: 10px;
-				h5 {
-					@include mainFont(16px, 24px, 0.1px, #252b42);
-					margin: 0;
-				}
-				.price {
-					@include flex();
-					gap: 5px;
-					h5 {
-						@include mainFont(16px, 24px, 0.1px, #bdbdbd);
-						&:nth-child(2) {
-							color: #23856d;
-						}
-					}
-				}
-			}
-			p {
-				@include mainFont(14px, 24px, 0.2px, #737373);
-				margin-bottom: 5px;
 			}
 		}
 	}
