@@ -66,3 +66,31 @@ code {
 		}
 	}
 }
+
+.main-header {
+	.ant-page-header {
+		@include flex(center, space-between);
+		@include horizontalPadding();
+		.ant-page-header-heading {
+			@include horizontalPadding(2rem, 2rem);
+		}
+		.ant-breadcrumb {
+			ol {
+				gap: 5px;
+				li {
+					@include flex();
+					gap: 5px;
+					a {
+						@include mainFont(14px, 24px, 0.2, #bdbdbd);
+						&.active {
+							color: #252b42;
+						}
+						&:hover {
+							color: #252a3b;
+						}
+					}
+				}
+			}
+		}
+	}
+}
