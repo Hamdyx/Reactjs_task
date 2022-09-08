@@ -16,7 +16,7 @@
 		.ant-menu-item {
 			padding: 0 0.75rem;
 			.ant-menu-title-content {
-				@include MainFont(14px, 24px, 0.2px, #737373);
+				@include mainFont(14px, 24px, 0.2px, #737373);
 			}
 		}
 	}

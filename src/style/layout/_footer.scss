@@ -21,4 +21,56 @@
 			gap: 20px;
 		}
 	}
+	.footer-links {
+		@include horizontalPadding(7rem, 7rem);
+		@include verticalPadding();
+		@include flex(center, space-between);
+		.links-list {
+			.ant-list-header {
+				border: 0;
+			}
+			.ant-list-items {
+				.ant-list-item {
+					padding: 0.5rem 0;
+					border: 0;
+					.ant-typography {
+						@include mainFont(14px, 24px, 0.2px, #737373);
+					}
+				}
+			}
+		}
+		.email-subscribe {
+			@include flex(flex-start, center);
+			flex-direction: column;
+			width: 321px;
+			gap: 10px;
+			margin-bottom: auto;
+			.ant-input-group-wrapper {
+				.ant-input {
+					background: #f9f9f9;
+					border: 1px solid #e6e6e6;
+					border-radius: 5px;
+					&::placeholder {
+						@include mainFont(14px, 28px, 0.2px, #737373);
+					}
+				}
+				.ant-input-group-addon {
+					.ant-btn {
+						@include mainFont(14px, 28px, 0.2px, #ffffff);
+						text-align: center;
+						background: #23a6f0;
+						border: 1px solid #e6e6e6;
+						border-radius: 0px 5px 5px 0px;
+						&:hover {
+							background: #0d9bee;
+						}
+					}
+				}
+			}
+		}
+		.title {
+			@include mainFont(16px, 24px, 0.1px, #252b42);
+			text-align: start;
+		}
+	}
 }

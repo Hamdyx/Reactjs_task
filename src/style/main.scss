@@ -9,15 +9,19 @@
 	font-weight: $fontWeight;
 	color: $color;
 }
-@mixin horizontalPadding() {
-	padding-right: 6rem;
-	padding-left: 6rem;
+@mixin horizontalPadding($paddingRight: 6rem, $paddingLeft: 6rem) {
+	padding-right: $paddingRight;
+	padding-left: $paddingLeft;
+}
+@mixin verticalPadding($paddingTop: 3rem, $paddingBottom: 3rem) {
+	padding-top: 3rem;
+	padding-bottom: 3rem;
 }
 @mixin horizontalMargin() {
 	margin-right: 6rem;
 	margin-left: 6rem;
 }
-@mixin MainFont(
+@mixin mainFont(
 	$fontSize: 14px,
 	$lineHeight: 24px,
 	$letterSpacing: 0.2px,
@@ -28,7 +32,6 @@
 	font-weight: 700;
 	font-size: $fontSize;
 	line-height: $lineHeight;
-	text-align: center;
 	letter-spacing: $letterSpacing;
 	color: $color;
 }
@@ -55,11 +58,11 @@ code {
 .ant-layout {
 	.ant-typography {
 		@include flex(center, center);
-		@include MainFont(14px, 24px, 0.2px, #737373);
+		@include mainFont(14px, 24px, 0.2px, #737373);
 		margin: 0;
 		&.logo {
 			padding: 0 20px;
-			@include MainFont(24px, 32px, 0.1px, #252b42);
+			@include mainFont(24px, 32px, 0.1px, #252b42);
 		}
 	}
 }
