@@ -1,12 +1,21 @@
 .footer {
-	padding: 3rem 6rem;
+	padding: 0;
 	background: #fff;
 	@media (max-width: 1200px) {
 		padding: 0 2.125rem;
 	}
+	.partners-section {
+		@include horizontalPadding();
+		@include flex(center, space-between);
+		height: 175px;
+		background: #fafafa;
+	}
 	.social-section {
 		@include flex(center, space-between);
+		@include horizontalMargin();
 		gap: 10px;
+		height: 138px;
+		border-bottom: 1px solid #e6e6e6;
 		.social-links {
 			@include flex();
 			gap: 20px;

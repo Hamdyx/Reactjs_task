@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout } from 'antd';
 import TopNav from './layout/TopNav';
-import AppFooter from './layout/Footer';
+import AppFooter from './layout/footer';
 
 const App: React.FC = () => {
 	return (

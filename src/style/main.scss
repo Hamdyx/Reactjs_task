@@ -9,6 +9,14 @@
 	font-weight: $fontWeight;
 	color: $color;
 }
+@mixin horizontalPadding() {
+	padding-right: 6rem;
+	padding-left: 6rem;
+}
+@mixin horizontalMargin() {
+	margin-right: 6rem;
+	margin-left: 6rem;
+}
 @mixin MainFont(
 	$fontSize: 14px,
 	$lineHeight: 24px,
