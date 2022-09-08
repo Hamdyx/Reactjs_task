@@ -14,8 +14,8 @@
 	padding-left: $paddingLeft;
 }
 @mixin verticalPadding($paddingTop: 3rem, $paddingBottom: 3rem) {
-	padding-top: 3rem;
-	padding-bottom: 3rem;
+	padding-top: $paddingTop;
+	padding-bottom: $paddingBottom;
 }
 @mixin horizontalMargin() {
 	margin-right: 6rem;
@@ -90,6 +90,29 @@ code {
 						}
 					}
 				}
+			}
+		}
+	}
+	.shop-cards {
+		@include flex();
+		@include horizontalPadding(6rem, 6rem);
+		@include verticalPadding(1rem, 3rem);
+		gap: 16px;
+		@media (max-width: 1024px) {
+			flex-wrap: wrap;
+			justify-content: space-around;
+		}
+		.card-item {
+			@include flex();
+			flex-direction: column;
+			width: 204px;
+			height: 223px;
+			background: rgba(33, 33, 33, 0.25);
+			h5 {
+				@include mainFont(16px, 24px, 0.1px, #fff);
+			}
+			p {
+				@include mainFont(14px, 20px, 0.2px, #fff);
 			}
 		}
 	}
