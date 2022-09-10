@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Layout, Typography } from 'antd';
@@ -21,6 +21,9 @@ const ShopItem: React.FC = () => {
 	const itemImg = `Item${item?.id}`;
 	type ObjectKey = keyof typeof Images;
 	const src = itemImg as ObjectKey;
+	useEffect(() => {
+		window!.scroll(0, 0);
+	});
 	return (
 		<>
 			<Layout className="main-header">
