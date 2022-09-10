@@ -129,6 +129,14 @@
 						height: 40px;
 						padding: 0;
 						border-radius: 50%;
+						&:focus {
+							color: unset;
+							border-color: #d9d9d9;
+						}
+						&.selected {
+							color: #40a9ff;
+							border-color: #40a9ff;
+						}
 					}
 				}
 			}

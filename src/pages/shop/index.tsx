@@ -1,15 +1,12 @@
 import React from 'react';
-import { Layout, Typography, Button } from 'antd';
+import { Layout, Typography } from 'antd';
 import HeaderWithBreadcrumb from '../../components/HeaderWithBreadcrumb';
 import Images from '../../assets/images';
 import { FilledStar, OutineStar } from '../../assets/icons/icons';
-import {
-	HeartOutlined,
-	ShoppingCartOutlined,
-	EyeOutlined,
-} from '@ant-design/icons';
+
 import ColorsRow from '../../components/ColorsRows';
 import ShopContent from '../../components/ShopItem';
+import ItemActions from '../../components/ItemActions';
 const { Title, Text } = Typography;
 
 const ShopItem: React.FC = () => {
@@ -48,20 +45,7 @@ const ShopItem: React.FC = () => {
 							venial consequent sent nostrum met.
 						</Text>
 						<ColorsRow />
-						<div className="item_actions">
-							<Button type="primary" className="filter_button">
-								Add To Cart
-							</Button>
-							<Button className="action_button">
-								<HeartOutlined />
-							</Button>
-							<Button className="action_button">
-								<ShoppingCartOutlined />
-							</Button>
-							<Button className="action_button">
-								<EyeOutlined />
-							</Button>
-						</div>
+						<ItemActions />
 					</div>
 				</div>
 			</Layout>

@@ -6,12 +6,12 @@ const HeaderWithBreadcrumb: React.FC<{ title?: string }> = ({ title = '' }) => {
 	return (
 		<PageHeader className="site-page-header" title={title}>
 			<Breadcrumb separator={<BreadcrumbSep />}>
-				<Breadcrumb.Item href="" className="active">
+				<Breadcrumb.Item className="active">
 					<NavLink to="/" className="breadcrumb_link">
 						Home
 					</NavLink>
 				</Breadcrumb.Item>
-				<Breadcrumb.Item href="">
+				<Breadcrumb.Item>
 					<NavLink to="/shop" className="breadcrumb_link">
 						Shop
 					</NavLink>
