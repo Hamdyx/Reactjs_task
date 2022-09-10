@@ -1,34 +1,10 @@
-@mixin flex($align: center, $justify: center, $flexWrap: nowrap) {
-	display: flex;
-	align-items: $align;
-	justify-content: $justify;
-	flex-wrap: $flexWrap;
-}
-@mixin font($fontSize: 16px, $fontWeight: 500, $color: $white_color) {
-	font-size: $fontSize !important;
-	font-weight: $fontWeight;
-	color: $color;
-}
-@mixin MainFont(
-	$fontSize: 14px,
-	$lineHeight: 24px,
-	$letterSpacing: 0.2px,
-	$color: #737373
-) {
-	font-family: 'Montserrat';
-	font-style: normal;
-	font-weight: 700;
-	font-size: $fontSize;
-	line-height: $lineHeight;
-	text-align: center;
-	letter-spacing: $letterSpacing;
-	color: $color;
-}
-
+@import './abstracts/mixins';
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 @import '~antd/dist/antd.css';
 @import './layout/header';
 @import './layout/footer';
+@import './pages/shop';
+@import './components/common';
 
 body {
 	margin: 0;
@@ -47,11 +23,11 @@ code {
 .ant-layout {
 	.ant-typography {
 		@include flex(center, center);
-		@include MainFont(14px, 24px, 0.2px, #737373);
+		@include mainFont(14px, 24px, 0.2px, #737373);
 		margin: 0;
 		&.logo {
 			padding: 0 20px;
-			@include MainFont(24px, 32px, 0.1px, #252b42);
+			@include mainFont(24px, 32px, 0.1px, #252b42);
 		}
 	}
 }

@@ -1,15 +1,113 @@
 .footer {
-	padding: 3rem 6rem;
+	padding: 0;
 	background: #fff;
-	@media (max-width: 1200px) {
-		padding: 0 2.125rem;
+	.partners-section {
+		@include verticalPadding();
+		@include horizontalPadding();
+		@include flex(center, space-between);
+		background: #fafafa;
+		@media (max-width: 992px) {
+			flex-wrap: wrap;
+			gap: 30px;
+			justify-content: center;
+			svg {
+				flex: 1 0 20%;
+			}
+		}
+		@media (max-width: 425px) {
+			flex-direction: column;
+			gap: 60px;
+			svg {
+				width: 150px;
+				height: 60px;
+			}
+		}
 	}
 	.social-section {
 		@include flex(center, space-between);
-		gap: 10px;
+		@include horizontalMargin();
+		@include verticalPadding();
+		column-gap: 10px;
+		row-gap: 25px;
+		border-bottom: 1px solid #e6e6e6;
+		@media (max-width: 425px) {
+			flex-direction: column;
+			align-items: flex-start;
+			@include horizontalMargin(3rem, 3rem);
+			border: 0;
+			& > .ant-typography.logo {
+				padding: 0;
+			}
+		}
+
 		.social-links {
 			@include flex();
 			gap: 20px;
+		}
+	}
+	.footer-links {
+		@include horizontalPadding(7rem, 7rem);
+		@include verticalPadding();
+		@include flex(center, space-between);
+		@media (max-width: 1200px) {
+			flex-wrap: wrap;
+			gap: 20px;
+		}
+		@media (max-width: 768px) {
+			column-gap: 100px;
+			justify-content: space-between;
+		}
+		@media (max-width: 425px) {
+			flex-direction: column;
+			align-items: flex-start;
+			@include horizontalPadding(3rem, 3rem);
+		}
+		.links-list {
+			.ant-list-header {
+				border: 0;
+			}
+			.ant-list-items {
+				.ant-list-item {
+					padding: 0.5rem 0;
+					border: 0;
+					.ant-typography {
+						@include mainFont(14px, 24px, 0.2px, #737373);
+					}
+				}
+			}
+		}
+		.email-subscribe {
+			@include flex(flex-start, center);
+			flex-direction: column;
+			width: 321px;
+			gap: 10px;
+			margin-bottom: auto;
+			.ant-input-group-wrapper {
+				.ant-input {
+					background: #f9f9f9;
+					border: 1px solid #e6e6e6;
+					border-radius: 5px;
+					&::placeholder {
+						@include mainFont(14px, 28px, 0.2px, #737373);
+					}
+				}
+				.ant-input-group-addon {
+					.ant-btn {
+						@include mainFont(14px, 28px, 0.2px, #ffffff);
+						text-align: center;
+						background: #23a6f0;
+						border: 1px solid #e6e6e6;
+						border-radius: 0px 5px 5px 0px;
+						&:hover {
+							background: #0d9bee;
+						}
+					}
+				}
+			}
+		}
+		.title {
+			@include mainFont(16px, 24px, 0.1px, #252b42);
+			text-align: start;
 		}
 	}
 }
