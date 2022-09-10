@@ -10,6 +10,8 @@ import Item9 from './shop/item-9.png';
 import Item10 from './shop/item-10.png';
 import Item11 from './shop/item-11.png';
 import Item12 from './shop/item-12.png';
+import carousel1 from './shop/carousel-1.png';
+import carousel2 from './shop/carousel-2.png';
 
 const Images = {
 	Item1,
@@ -24,5 +26,7 @@ const Images = {
 	Item10,
 	Item11,
 	Item12,
+	carousel1,
+	carousel2,
 };
 export default Images;

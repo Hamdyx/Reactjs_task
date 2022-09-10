@@ -1,34 +1,25 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import { Layout, Rate, Typography } from 'antd';
+
 import { RootState } from '../../store/configureStore';
-import Images from '../../assets/images';
-import {
-	selectProductById,
-	selectProductIds,
-} from '../../store/reducers/productReducer';
+import { selectProductIds } from '../../store/reducers/productReducer';
 import HeaderWithBreadcrumb from '../../components/HeaderWithBreadcrumb';
 import ColorsRow from '../../components/ColorsRows';
 import ShopContent from '../../components/ShopItem';
 import ItemActions from '../../components/ItemActions';
+import ProductCarousel from '../../components/ProductCarousel';
 const { Title, Text } = Typography;
 
 const ShopItem: React.FC = () => {
-	const { id } = useParams();
-	const item = useSelector((state: RootState) =>
-		selectProductById(state, id || '1')
-	);
 	const productIds = useSelector((state: RootState) =>
 		selectProductIds(state)
 	).slice(0, 8);
 
-	const itemImg = `Item${item?.id}`;
-	type ObjectKey = keyof typeof Images;
-	const src = itemImg as ObjectKey;
 	useEffect(() => {
 		window!.scroll(0, 0);
 	});
+
 	return (
 		<>
 			<Layout className="main-header">
@@ -36,9 +27,7 @@ const ShopItem: React.FC = () => {
 			</Layout>
 			<Layout className="Shop-content_container">
 				<div className="shop-item_container">
-					<div className="aa">
-						<img src={Images?.[src]} alt="product item" />
-					</div>
+					<ProductCarousel />
 					<div className="item_details">
 						<Title level={4}>Floating Phone</Title>
 						<div className="review_container">
