@@ -61,9 +61,10 @@
 		@include flex(center, space-between);
 		flex-direction: row;
 		flex-wrap: wrap;
-		gap: 10px;
+		gap: 30px;
 		.ant-card {
 			border: 0;
+			flex: 1 0 20%; // 4 item per row
 			.ant-card-body {
 				padding: 0;
 				@include flex();

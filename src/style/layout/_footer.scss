@@ -5,10 +5,18 @@
 		padding: 0 2.125rem;
 	}
 	.partners-section {
+		@include verticalPadding();
 		@include horizontalPadding();
 		@include flex(center, space-between);
-		height: 175px;
 		background: #fafafa;
+		@media (max-width: 992px) {
+			flex-wrap: wrap;
+			gap: 30px;
+			justify-content: center;
+			svg {
+				flex: 1 0 20%;
+			}
+		}
 	}
 	.social-section {
 		@include flex(center, space-between);
@@ -25,7 +33,14 @@
 		@include horizontalPadding(7rem, 7rem);
 		@include verticalPadding();
 		@include flex(center, space-between);
+		@media (max-width: 1200px) {
+			flex-wrap: wrap;
+			gap: 20px;
+		}
 		.links-list {
+			@media (max-width: 768px) {
+				flex: 1 0 40%;
+			}
 			.ant-list-header {
 				border: 0;
 			}
