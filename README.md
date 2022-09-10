@@ -7,7 +7,18 @@ The user also can click on the filter button on the master page to sort by name 
 
 ## Project Stack
 
-- React, Redux, Typescript, SCSS,
+- React, Redux, Typescript, SCSS, Ant Design, react-router
+
+## Available Features
+
+- various products displayed in different pages
+- add as many products into the cart and see a badge with the total number
+- add different products to favourite or watchlist
+- responsive design
+
+## In-Development
+
+- main navbar links responsive
 
 ## Available Scripts
 
