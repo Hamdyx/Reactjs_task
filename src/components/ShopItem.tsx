@@ -6,16 +6,10 @@ import Images from '../assets/images';
 import { Link } from 'react-router-dom';
 import ColorsRow from './ColorsRows';
 import { RootState } from '../store/configureStore';
-import {
-	selectProductById,
-	selectProductIds,
-} from '../store/reducers/productReducer';
+import { selectProductById } from '../store/reducers/productReducer';
 
-const ShopContent: React.FC<{ limit?: number }> = ({ limit = 12 }) => {
-	const productIds = useSelector((state: RootState) =>
-		selectProductIds(state)
-	).slice(0, limit);
-	const cardItems = productIds.map((item) => (
+const ShopContent: React.FC<{ pageIds: EntityId[] }> = ({ pageIds }) => {
+	const cardItems = pageIds.map((item) => (
 		<ItemCard key={item} itemId={item} />
 	));
 	return <div className="shop-items">{cardItems}</div>;
@@ -25,7 +19,7 @@ const ItemCard: React.FC<{ itemId: EntityId }> = ({ itemId }) => {
 	const item = useSelector((state: RootState) =>
 		selectProductById(state, itemId)
 	);
-	const itemImg = `Item${item?.id}`;
+	const itemImg = `Item${item?.img}`;
 	type ObjectKey = keyof typeof Images;
 	const img = itemImg as ObjectKey;
 	return (

@@ -4,7 +4,10 @@ import { useParams } from 'react-router-dom';
 import { Layout, Rate, Typography } from 'antd';
 import { RootState } from '../../store/configureStore';
 import Images from '../../assets/images';
-import { selectProductById } from '../../store/reducers/productReducer';
+import {
+	selectProductById,
+	selectProductIds,
+} from '../../store/reducers/productReducer';
 import HeaderWithBreadcrumb from '../../components/HeaderWithBreadcrumb';
 import ColorsRow from '../../components/ColorsRows';
 import ShopContent from '../../components/ShopItem';
@@ -16,6 +19,9 @@ const ShopItem: React.FC = () => {
 	const item = useSelector((state: RootState) =>
 		selectProductById(state, id || '1')
 	);
+	const productIds = useSelector((state: RootState) =>
+		selectProductIds(state)
+	).slice(0, 8);
 
 	const itemImg = `Item${item?.id}`;
 	type ObjectKey = keyof typeof Images;
@@ -58,7 +64,7 @@ const ShopItem: React.FC = () => {
 			</Layout>
 			<Layout className="best_seller-container">
 				<Title level={3}>BESTSELLER PRODUCTS</Title>
-				<ShopContent limit={8} />
+				<ShopContent pageIds={productIds} />
 			</Layout>
 		</>
 	);
