@@ -1,9 +1,6 @@
 .footer {
 	padding: 0;
 	background: #fff;
-	@media (max-width: 1200px) {
-		padding: 0 2.125rem;
-	}
 	.partners-section {
 		@include verticalPadding();
 		@include horizontalPadding();
@@ -17,13 +14,32 @@
 				flex: 1 0 20%;
 			}
 		}
+		@media (max-width: 425px) {
+			flex-direction: column;
+			gap: 60px;
+			svg {
+				width: 150px;
+				height: 60px;
+			}
+		}
 	}
 	.social-section {
 		@include flex(center, space-between);
 		@include horizontalMargin();
-		gap: 10px;
-		height: 138px;
+		@include verticalPadding();
+		column-gap: 10px;
+		row-gap: 25px;
 		border-bottom: 1px solid #e6e6e6;
+		@media (max-width: 425px) {
+			flex-direction: column;
+			align-items: flex-start;
+			@include horizontalMargin(3rem, 3rem);
+			border: 0;
+			& > .ant-typography.logo {
+				padding: 0;
+			}
+		}
+
 		.social-links {
 			@include flex();
 			gap: 20px;
@@ -37,10 +53,16 @@
 			flex-wrap: wrap;
 			gap: 20px;
 		}
+		@media (max-width: 768px) {
+			column-gap: 100px;
+			justify-content: space-between;
+		}
+		@media (max-width: 425px) {
+			flex-direction: column;
+			align-items: flex-start;
+			@include horizontalPadding(3rem, 3rem);
+		}
 		.links-list {
-			@media (max-width: 768px) {
-				flex: 1 0 40%;
-			}
 			.ant-list-header {
 				border: 0;
 			}

@@ -3,12 +3,22 @@
 	@include horizontalPadding();
 	@include verticalPadding(2rem, 2rem);
 
+	@media (max-width: 1024px) {
+		@include horizontalPadding(3rem, 3rem);
+	}
 	.filter-row {
 		@include flex(center, space-between);
 		@include verticalPadding(1.5rem, 1.5rem);
-		height: 98px;
+		@media (max-width: 1024px) {
+			@include horizontalPadding(2rem, 2rem);
+			gap: 20px;
+		}
+
 		.ant-input-search {
 			width: 350px;
+			@media (max-width: 1024px) {
+				width: 30vw;
+			}
 			.ant-input-group {
 				height: 45px;
 				.ant-input {
@@ -33,6 +43,9 @@
 		.filter_section {
 			@include flex();
 			gap: 15px;
+			@media (max-width: 992px) {
+				flex-direction: column-reverse;
+			}
 			.filter_button {
 				padding: 10px 20px;
 				gap: 10px;
@@ -70,6 +83,11 @@
 				@include flex();
 				flex-direction: column;
 				gap: 10px;
+				img {
+					@media (max-width: 425px) {
+						width: 80vw;
+					}
+				}
 				h5 {
 					@include mainFont(16px, 24px, 0.1px, #252b42);
 					margin: 0;
