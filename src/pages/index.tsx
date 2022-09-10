@@ -1,15 +1,34 @@
-import React from 'react';
-import { Layout, Input, Select, Button, Typography } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Layout, Input, Select, Button, Typography, Pagination } from 'antd';
 import HeaderWithBreadcrumb from '../components/HeaderWithBreadcrumb';
 import CardItem from '../components/CardItem';
 import ShopContent from '../components/ShopItem';
+import { RootState, useAppDispatch } from '../store/configureStore';
+import {
+	selectProductIds,
+	sortProducts,
+} from '../store/reducers/productReducer';
 const { Search } = Input;
 const { Option } = Select;
 const { Title } = Typography;
 
 const ShopPage: React.FC = () => {
+	const productIds = useSelector((state: RootState) => selectProductIds(state));
+	const [pageIds, setPageIds] = useState(productIds.slice(0, 12));
 	const cards = [1, 2, 3, 4, 5];
 	const cardItems = cards.map((item) => <CardItem key={item} />);
+
+	const onPageChange = (page: number, pageSize: number) => {
+		const pageStart = (page - 1) * pageSize;
+		const pageEnd = page * pageSize;
+		const pageContent = productIds.slice(pageStart, pageEnd);
+		setPageIds(pageContent);
+	};
+
+	useEffect(() => {
+		setPageIds(productIds.slice(0, 12));
+	}, [productIds]);
 	return (
 		<>
 			<Layout className="main-header">
@@ -18,12 +37,25 @@ const ShopPage: React.FC = () => {
 			</Layout>
 			<Layout className="Shop-content_container">
 				<FilterRow />
-				<ShopContent />
+				<ShopContent pageIds={pageIds} />
+				<Pagination
+					defaultCurrent={1}
+					pageSize={12}
+					total={36}
+					onChange={onPageChange}
+					prevIcon={'First'}
+					nextIcon={'Next'}
+				/>
 			</Layout>
 		</>
 	);
 };
 const FilterRow: React.FC = () => {
+	const dispatch = useAppDispatch();
+	const isSorted = useSelector((state: RootState) => state.products.sorted);
+	const handleSortChange = () => {
+		dispatch(sortProducts(isSorted));
+	};
 	return (
 		<div className="filter-row">
 			<Title level={5}>Showing all 12 results</Title>
@@ -36,7 +68,7 @@ const FilterRow: React.FC = () => {
 				<Select
 					defaultValue="Name"
 					style={{ width: 120 }}
-					// onChange={handleChange}
+					onChange={handleSortChange}
 				>
 					<Option value="price">Price</Option>
 					<Option value="Name">Name</Option>

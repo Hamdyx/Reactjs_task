@@ -6,11 +6,13 @@ import {
 	HeartOutlined,
 } from '@ant-design/icons';
 import { Layout, Menu, Typography } from 'antd';
-
+import { useSelector } from 'react-redux';
+import { RootState } from '../store/configureStore';
 const { Paragraph } = Typography;
 const { Header } = Layout;
 
 const TopNav: React.FC = () => {
+	const { cart, favourite } = useSelector((state: RootState) => state?.user);
 	const navItems = ['home', 'shop', 'about', 'blog', 'contact', 'pages'].map(
 		(key) => ({
 			key,
@@ -43,9 +45,11 @@ const TopNav: React.FC = () => {
 				</Paragraph>
 				<Paragraph className="item">
 					<ShoppingCartOutlined />
+					{cart?.length}
 				</Paragraph>
 				<Paragraph className="item">
 					<HeartOutlined />
+					{favourite?.length}
 				</Paragraph>
 			</div>
 		</Header>

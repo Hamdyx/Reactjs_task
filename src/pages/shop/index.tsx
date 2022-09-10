@@ -1,18 +1,25 @@
-import React from 'react';
-import { Layout, Typography, Button } from 'antd';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { Layout, Rate, Typography } from 'antd';
+
+import { RootState } from '../../store/configureStore';
+import { selectProductIds } from '../../store/reducers/productReducer';
 import HeaderWithBreadcrumb from '../../components/HeaderWithBreadcrumb';
-import Images from '../../assets/images';
-import { FilledStar, OutineStar } from '../../assets/icons/icons';
-import {
-	HeartOutlined,
-	ShoppingCartOutlined,
-	EyeOutlined,
-} from '@ant-design/icons';
 import ColorsRow from '../../components/ColorsRows';
 import ShopContent from '../../components/ShopItem';
+import ItemActions from '../../components/ItemActions';
+import ProductCarousel from '../../components/ProductCarousel';
 const { Title, Text } = Typography;
 
 const ShopItem: React.FC = () => {
+	const productIds = useSelector((state: RootState) =>
+		selectProductIds(state)
+	).slice(0, 8);
+
+	useEffect(() => {
+		window!.scroll(0, 0);
+	});
+
 	return (
 		<>
 			<Layout className="main-header">
@@ -20,19 +27,11 @@ const ShopItem: React.FC = () => {
 			</Layout>
 			<Layout className="Shop-content_container">
 				<div className="shop-item_container">
-					<div className="aa">
-						<img src={Images.Item1} alt="product item" />
-					</div>
+					<ProductCarousel />
 					<div className="item_details">
 						<Title level={4}>Floating Phone</Title>
 						<div className="review_container">
-							<div className="stars">
-								<FilledStar />
-								<FilledStar />
-								<FilledStar />
-								<FilledStar />
-								<OutineStar />
-							</div>
+							<Rate allowHalf defaultValue={4} />
 							<Text>10 Reviews</Text>
 						</div>
 						<Title level={3} className="price">
@@ -48,26 +47,13 @@ const ShopItem: React.FC = () => {
 							venial consequent sent nostrum met.
 						</Text>
 						<ColorsRow />
-						<div className="item_actions">
-							<Button type="primary" className="filter_button">
-								Add To Cart
-							</Button>
-							<Button className="action_button">
-								<HeartOutlined />
-							</Button>
-							<Button className="action_button">
-								<ShoppingCartOutlined />
-							</Button>
-							<Button className="action_button">
-								<EyeOutlined />
-							</Button>
-						</div>
+						<ItemActions />
 					</div>
 				</div>
 			</Layout>
 			<Layout className="best_seller-container">
 				<Title level={3}>BESTSELLER PRODUCTS</Title>
-				<ShopContent limit={8} />
+				<ShopContent pageIds={productIds} />
 			</Layout>
 		</>
 	);
