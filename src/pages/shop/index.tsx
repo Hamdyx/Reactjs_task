@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Typography, Carousel } from 'antd';
+import { Layout, Typography, Carousel, Button } from 'antd';
 import HeaderWithBreadcrumb from '../../components/HeaderWithBreadcrumb';
 import Images from '../../assets/images';
 import {
@@ -8,6 +8,11 @@ import {
 	OutineStar,
 	PrevArrow,
 } from '../../assets/icons/icons';
+import {
+	HeartOutlined,
+	ShoppingCartOutlined,
+	EyeOutlined,
+} from '@ant-design/icons';
 import ColorsRow from '../../components/ColorsRows';
 const { Title, Text } = Typography;
 
@@ -20,7 +25,6 @@ const ShopItem: React.FC = () => {
 			<Layout className="Shop-content_container">
 				<div className="shop-item_container">
 					<div className="aa">
-						ProductCarousel
 						<img src={Images.Item1} alt="product item" />
 					</div>
 					<div className="item_details">
@@ -48,39 +52,25 @@ const ShopItem: React.FC = () => {
 							venial consequent sent nostrum met.
 						</Text>
 						<ColorsRow />
+						<div className="item_actions">
+							<Button type="primary" className="filter_button">
+								Add To Cart
+							</Button>
+							<Button className="action_button">
+								<HeartOutlined />
+							</Button>
+							<Button className="action_button">
+								<ShoppingCartOutlined />
+							</Button>
+							<Button className="action_button">
+								<EyeOutlined />
+							</Button>
+						</div>
 					</div>
 				</div>
 			</Layout>
 		</>
 	);
 };
-// const ProductCarousel: React.FC = () => {
-// 	return (
-// 		<Carousel
-// 			autoplay
-// 			arrows
-// 			nextArrow={
-// 				<button>
-// 					<NextArrow />
-// 				</button>
-// 			}
-// 			prevArrow={
-// 				<button>
-// 					<PrevArrow />
-// 				</button>
-// 			}
-// 		>
-// 			<div className="">
-// 				<img src={Images.Item1} />
-// 			</div>
-// 			<div className="">
-// 				<img src={Images.Item2} />
-// 			</div>
-// 			<div className="">
-// 				<img src={Images.Item3} />
-// 			</div>
-// 		</Carousel>
-// 	);
-// };
 
 export default ShopItem;
