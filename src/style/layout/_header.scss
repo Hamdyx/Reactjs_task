@@ -76,6 +76,9 @@
 	.ant-page-header {
 		@include flex(center, space-between);
 		@include horizontalPadding();
+		@media (max-width: 768px) {
+			justify-content: center;
+		}
 		@media (max-width: 425px) {
 			flex-direction: column;
 			row-gap: 64px;

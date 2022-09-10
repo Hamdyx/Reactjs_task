@@ -37,10 +37,14 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	gap: 30px;
+	@media (min-width: 1440px) {
+		justify-content: space-evenly;
+	}
 	.shop-items_link {
 		.ant-card {
-			border: 0;
 			flex: 1 0 20%; // 4 item per row
+			border: 0;
+
 			.ant-card-body {
 				padding: 0;
 				@include flex();
