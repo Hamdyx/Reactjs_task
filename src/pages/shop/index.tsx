@@ -1,15 +1,26 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { Layout, Typography } from 'antd';
-import HeaderWithBreadcrumb from '../../components/HeaderWithBreadcrumb';
+import { RootState } from '../../store/configureStore';
 import Images from '../../assets/images';
 import { FilledStar, OutineStar } from '../../assets/icons/icons';
-
+import { selectProductById } from '../../store/reducers/productReducer';
+import HeaderWithBreadcrumb from '../../components/HeaderWithBreadcrumb';
 import ColorsRow from '../../components/ColorsRows';
 import ShopContent from '../../components/ShopItem';
 import ItemActions from '../../components/ItemActions';
 const { Title, Text } = Typography;
 
 const ShopItem: React.FC = () => {
+	const { id } = useParams();
+	const item = useSelector((state: RootState) =>
+		selectProductById(state, id || '1')
+	);
+
+	const itemImg = `Item${item?.id}`;
+	type ObjectKey = keyof typeof Images;
+	const src = itemImg as ObjectKey;
 	return (
 		<>
 			<Layout className="main-header">
@@ -18,7 +29,7 @@ const ShopItem: React.FC = () => {
 			<Layout className="Shop-content_container">
 				<div className="shop-item_container">
 					<div className="aa">
-						<img src={Images.Item1} alt="product item" />
+						<img src={Images?.[src]} alt="product item" />
 					</div>
 					<div className="item_details">
 						<Title level={4}>Floating Phone</Title>

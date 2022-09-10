@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Layout, Input, Select, Button, Typography } from 'antd';
 import HeaderWithBreadcrumb from '../components/HeaderWithBreadcrumb';
 import CardItem from '../components/CardItem';
 import ShopContent from '../components/ShopItem';
+import { useAppDispatch } from '../store/configureStore';
+import { fetchProducts } from '../store/reducers/productReducer';
 const { Search } = Input;
 const { Option } = Select;
 const { Title } = Typography;
 
 const ShopPage: React.FC = () => {
+	const dispatch = useAppDispatch();
 	const cards = [1, 2, 3, 4, 5];
 	const cardItems = cards.map((item) => <CardItem key={item} />);
+	useEffect(() => {
+		dispatch(fetchProducts());
+	}, [dispatch]);
 	return (
 		<>
 			<Layout className="main-header">
