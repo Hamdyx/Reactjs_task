@@ -4,7 +4,7 @@
 	justify-content: $justify;
 	flex-wrap: $flexWrap;
 }
-@mixin font($fontSize: 16px, $fontWeight: 500, $color: $white_color) {
+@mixin font($fontSize: 16px, $fontWeight: 500, $color: #fff) {
 	font-size: $fontSize !important;
 	font-weight: $fontWeight;
 	color: $color;

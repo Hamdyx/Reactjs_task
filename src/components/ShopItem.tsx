@@ -1,11 +1,11 @@
 import React from 'react';
-import { Card, Layout } from 'antd';
+import { Card } from 'antd';
 import Images from '../assets/images';
 
-const ShopItem: React.FC = () => {
+const ShopContent: React.FC = () => {
 	const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 	const cardItems = cards.map((item) => <ItemCard key={item} item={item} />);
-	return <Layout className="shop-items">{cardItems}</Layout>;
+	return <div className="shop-items">{cardItems}</div>;
 };
 
 const ItemCard: React.FC<{ item: number }> = ({ item }) => {
@@ -27,4 +27,4 @@ const ItemCard: React.FC<{ item: number }> = ({ item }) => {
 	);
 };
 
-export default ShopItem;
+export default ShopContent;
