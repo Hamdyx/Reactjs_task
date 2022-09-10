@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { Layout, Typography } from 'antd';
+import { Layout, Rate, Typography } from 'antd';
 import { RootState } from '../../store/configureStore';
 import Images from '../../assets/images';
-import { FilledStar, OutineStar } from '../../assets/icons/icons';
 import { selectProductById } from '../../store/reducers/productReducer';
 import HeaderWithBreadcrumb from '../../components/HeaderWithBreadcrumb';
 import ColorsRow from '../../components/ColorsRows';
@@ -37,13 +36,7 @@ const ShopItem: React.FC = () => {
 					<div className="item_details">
 						<Title level={4}>Floating Phone</Title>
 						<div className="review_container">
-							<div className="stars">
-								<FilledStar />
-								<FilledStar />
-								<FilledStar />
-								<FilledStar />
-								<OutineStar />
-							</div>
+							<Rate allowHalf defaultValue={4} />
 							<Text>10 Reviews</Text>
 						</div>
 						<Title level={3} className="price">

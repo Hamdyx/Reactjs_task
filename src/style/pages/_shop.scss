@@ -82,12 +82,14 @@
 				.review_container {
 					@include flex();
 					align-self: flex-start;
-
 					gap: 10px;
-					.stars {
-						@include flex();
-						gap: 5px;
+					.ant-rate-star {
+						svg {
+							stroke: #f3cd03;
+							stroke-width: 50px;
+						}
 					}
+
 					.ant-typography {
 						@include mainFont(14px, 24px, 0.2px, #737373);
 					}
