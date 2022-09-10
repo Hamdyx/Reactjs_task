@@ -32,3 +32,44 @@
 	border-radius: 5px;
 	@include mainFont(14px, 24px, 0.2px, #ffffff);
 }
+.shop-items {
+	@include flex(center, space-between);
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 30px;
+	.shop-items_link {
+		.ant-card {
+			border: 0;
+			flex: 1 0 20%; // 4 item per row
+			.ant-card-body {
+				padding: 0;
+				@include flex();
+				flex-direction: column;
+				gap: 10px;
+				img {
+					@media (max-width: 425px) {
+						width: 80vw;
+					}
+				}
+				h5 {
+					@include mainFont(16px, 24px, 0.1px, #252b42);
+					margin: 0;
+				}
+				.price {
+					@include flex();
+					gap: 5px;
+					h5 {
+						@include mainFont(16px, 24px, 0.1px, #bdbdbd);
+						&:nth-child(2) {
+							color: #23856d;
+						}
+					}
+				}
+			}
+			p {
+				@include mainFont(14px, 24px, 0.2px, #737373);
+				margin-bottom: 5px;
+			}
+		}
+	}
+}

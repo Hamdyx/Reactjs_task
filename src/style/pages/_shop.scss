@@ -1,174 +1,145 @@
-.Shop-content_container {
-	background: #ffffff;
-	@include horizontalPadding();
-	@include verticalPadding(2rem, 2rem);
+.ant-layout {
+	background: #fafafa;
+	.Shop-content_container {
+		@include horizontalPadding();
+		@include verticalPadding(2rem, 2rem);
 
-	@media (max-width: 1024px) {
-		@include horizontalPadding(3rem, 3rem);
-	}
-	.filter-row {
-		@include flex(center, space-between);
-		@include verticalPadding(1.5rem, 1.5rem);
 		@media (max-width: 1024px) {
-			@include horizontalPadding(2rem, 2rem);
-			gap: 20px;
+			@include horizontalPadding(3rem, 3rem);
 		}
-
-		.ant-input-search {
-			width: 350px;
+		.filter-row {
+			@include flex(center, space-between);
+			@include verticalPadding(1.5rem, 1.5rem);
 			@media (max-width: 1024px) {
-				width: 30vw;
-			}
-			.ant-input-group {
-				height: 45px;
-				.ant-input {
-					background: #e4e4e4;
-					height: 45px;
-					@include mainFont(14px, 24px, 0.2px, #b6b6b6);
-				}
-				.ant-input-group-addon {
-					button {
-						background: #e4e4e4;
-						border-left: 0;
-						height: 100%;
-						svg {
-							width: 20px;
-							height: 20px;
-							fill: #000;
-						}
-					}
-				}
-			}
-		}
-		.filter_section {
-			@include flex();
-			gap: 15px;
-			@media (max-width: 992px) {
-				flex-direction: column-reverse;
+				@include horizontalPadding(2rem, 2rem);
+				gap: 20px;
 			}
 
-			.ant-select {
-				.ant-select-selector {
-					@include mainFont(14px, 28px, 0.2px);
-					@include flex();
-					background: #f9f9f9;
-					color: #737373;
-					height: 50px;
-					input {
-						@include verticalPadding(1rem, 1rem);
-						height: 50px;
-					}
+			.ant-input-search {
+				width: 350px;
+				@media (max-width: 1024px) {
+					width: 30vw;
 				}
-			}
-		}
-	}
-	.shop-items {
-		@include flex(center, space-between);
-		flex-direction: row;
-		flex-wrap: wrap;
-		gap: 30px;
-		.shop-items_link {
-			.ant-card {
-				border: 0;
-				flex: 1 0 20%; // 4 item per row
-				.ant-card-body {
-					padding: 0;
-					@include flex();
-					flex-direction: column;
-					gap: 10px;
-					img {
-						@media (max-width: 425px) {
-							width: 80vw;
-						}
+				.ant-input-group {
+					height: 45px;
+					.ant-input {
+						background: #e4e4e4;
+						height: 45px;
+						@include mainFont(14px, 24px, 0.2px, #b6b6b6);
 					}
-					h5 {
-						@include mainFont(16px, 24px, 0.1px, #252b42);
-						margin: 0;
-					}
-					.price {
-						@include flex();
-						gap: 5px;
-						h5 {
-							@include mainFont(16px, 24px, 0.1px, #bdbdbd);
-							&:nth-child(2) {
-								color: #23856d;
+					.ant-input-group-addon {
+						button {
+							background: #e4e4e4;
+							border-left: 0;
+							height: 100%;
+							svg {
+								width: 20px;
+								height: 20px;
+								fill: #000;
 							}
 						}
 					}
 				}
-				p {
-					@include mainFont(14px, 24px, 0.2px, #737373);
-					margin-bottom: 5px;
+			}
+			.filter_section {
+				@include flex();
+				gap: 15px;
+				@media (max-width: 992px) {
+					flex-direction: column-reverse;
+				}
+
+				.ant-select {
+					.ant-select-selector {
+						@include mainFont(14px, 28px, 0.2px);
+						@include flex();
+						background: #f9f9f9;
+						color: #737373;
+						height: 50px;
+						input {
+							@include verticalPadding(1rem, 1rem);
+							height: 50px;
+						}
+					}
+				}
+			}
+		}
+
+		.shop-item_container {
+			@include flex(center, space-between);
+			.item_details {
+				@include flex();
+				@include verticalPadding(1rem, 3rem);
+				flex-direction: column;
+				gap: 15px;
+				max-width: 510px;
+				h4 {
+					@include mainFont(20px, 30px, 0.2px, #252b42);
+					align-self: flex-start;
+				}
+				.review_container {
+					@include flex();
+					align-self: flex-start;
+
+					gap: 10px;
+					.stars {
+						@include flex();
+						gap: 5px;
+					}
+					.ant-typography {
+						@include mainFont(14px, 24px, 0.2px, #737373);
+					}
+				}
+				.price {
+					@include mainFont(24px, 32px, 0.1px, #252b42);
+					align-self: flex-start;
+				}
+				.availability {
+					@include flex();
+					align-self: flex-start;
+					gap: 5px;
+					.ant-typography {
+						@include mainFont(14px, 24px, 0.12px, #737373);
+						&.status {
+							color: #23a6f0;
+						}
+					}
+				}
+				.details {
+					@include verticalPadding(1rem, 3rem);
+					@include mainFont(14px, 20px, 0.12px, #858585);
+					border-bottom: 1px solid #bdbdbd;
+				}
+				.colors {
+					@include verticalPadding(1rem, 1rem);
+					justify-content: flex-start;
+					span {
+						width: 30px;
+						height: 30px;
+					}
+				}
+				.item_actions {
+					@include flex();
+					align-self: flex-start;
+					gap: 10px;
+					.action_button {
+						width: 40px;
+						height: 40px;
+						padding: 0;
+						border-radius: 50%;
+					}
 				}
 			}
 		}
 	}
-	.shop-item_container {
-		@include flex(center, space-between);
-		// @include horizontalPadding();
-		.item_details {
-			@include flex();
-			@include verticalPadding(1rem, 3rem);
-			flex-direction: column;
-			gap: 15px;
-			max-width: 510px;
-			h4 {
-				@include mainFont(20px, 30px, 0.2px, #252b42);
-				align-self: flex-start;
-			}
-			.review_container {
-				@include flex();
-				align-self: flex-start;
-
-				gap: 10px;
-				.stars {
-					@include flex();
-					gap: 5px;
-				}
-				.ant-typography {
-					@include mainFont(14px, 24px, 0.2px, #737373);
-				}
-			}
-			.price {
-				@include mainFont(24px, 32px, 0.1px, #252b42);
-				align-self: flex-start;
-			}
-			.availability {
-				@include flex();
-				align-self: flex-start;
-				gap: 5px;
-				.ant-typography {
-					@include mainFont(14px, 24px, 0.12px, #737373);
-					&.status {
-						color: #23a6f0;
-					}
-				}
-			}
-			.details {
-				@include verticalPadding(1rem, 3rem);
-				@include mainFont(14px, 20px, 0.12px, #858585);
-				border-bottom: 1px solid #bdbdbd;
-			}
-			.colors {
-				@include verticalPadding(1rem, 1rem);
-				justify-content: flex-start;
-				span {
-					width: 30px;
-					height: 30px;
-				}
-			}
-			.item_actions {
-				@include flex();
-				align-self: flex-start;
-				gap: 10px;
-				.action_button {
-					width: 40px;
-					height: 40px;
-					padding: 0;
-
-					border-radius: 50%;
-				}
-			}
+	.best_seller-container {
+		@include verticalPadding(3rem, 3rem);
+		@include horizontalPadding();
+		.ant-typography {
+			@include mainFont(24px, 32px, 0.1px, #252b42);
+			@include verticalPadding(2rem, 2rem);
+			justify-content: flex-start;
+			width: 100%;
+			border-bottom: 2px solid #ececec;
 		}
 	}
 }

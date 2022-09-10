@@ -1,19 +1,15 @@
 import React from 'react';
-import { Layout, Typography, Carousel, Button } from 'antd';
+import { Layout, Typography, Button } from 'antd';
 import HeaderWithBreadcrumb from '../../components/HeaderWithBreadcrumb';
 import Images from '../../assets/images';
-import {
-	FilledStar,
-	NextArrow,
-	OutineStar,
-	PrevArrow,
-} from '../../assets/icons/icons';
+import { FilledStar, OutineStar } from '../../assets/icons/icons';
 import {
 	HeartOutlined,
 	ShoppingCartOutlined,
 	EyeOutlined,
 } from '@ant-design/icons';
 import ColorsRow from '../../components/ColorsRows';
+import ShopContent from '../../components/ShopItem';
 const { Title, Text } = Typography;
 
 const ShopItem: React.FC = () => {
@@ -68,6 +64,10 @@ const ShopItem: React.FC = () => {
 						</div>
 					</div>
 				</div>
+			</Layout>
+			<Layout className="best_seller-container">
+				<Title level={3}>BESTSELLER PRODUCTS</Title>
+				<ShopContent limit={8} />
 			</Layout>
 		</>
 	);

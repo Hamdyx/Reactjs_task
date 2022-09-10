@@ -4,8 +4,10 @@ import Images from '../assets/images';
 import { Link } from 'react-router-dom';
 import ColorsRow from './ColorsRows';
 
-const ShopContent: React.FC = () => {
-	const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+const ShopContent: React.FC<{ limit?: number }> = ({ limit = 12 }) => {
+	const cards = Array(limit)
+		.fill('item')
+		.map((el, i) => i + 1);
 	const cardItems = cards.map((item) => <ItemCard key={item} item={item} />);
 	return <div className="shop-items">{cardItems}</div>;
 };
