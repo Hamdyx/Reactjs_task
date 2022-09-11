@@ -6,6 +6,7 @@ import CardItem from '../components/CardItem';
 import ShopContent from '../components/ShopItem';
 import { RootState, useAppDispatch } from '../store/configureStore';
 import {
+	selectAllProducts,
 	selectProductIds,
 	sortProducts,
 } from '../store/reducers/productReducer';
@@ -52,9 +53,12 @@ const ShopPage: React.FC = () => {
 };
 const FilterRow: React.FC = () => {
 	const dispatch = useAppDispatch();
-	const isSorted = useSelector((state: RootState) => state.products.sorted);
-	const handleSortChange = () => {
-		dispatch(sortProducts(isSorted));
+	const allProduct = useSelector((state: RootState) =>
+		selectAllProducts(state)
+	);
+	const handleSortChange = (sortProp: string) => {
+		console.log('handleSortChange =====> sortProp', sortProp);
+		dispatch(sortProducts({ sortProp, allProduct }));
 	};
 	return (
 		<div className="filter-row">

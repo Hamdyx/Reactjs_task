@@ -31,23 +31,36 @@ export const fetchProducts = createAsyncThunk(
 		const itemsList: any = [];
 		for (let i = 1; i <= 36; i++) {
 			const item = { ...dataItems };
+			const randPrefix = Math.floor(Math.random() * 26);
+			const randChar = String.fromCharCode(randPrefix + 97);
 			item.id = i;
+			item.title = `${randChar}-`.concat(item?.title);
+			const price = item.price.slice(1);
+			const randPrice = parseFloat(price) + Math.floor(Math.random() * 100);
+			item.price = `$${randPrice.toFixed(2)}`;
 			item.img = Math.ceil(Math.random() * 12);
 			itemsList.push(item);
 		}
 		return itemsList;
 	}
 );
+const sortByName = (a: Product, b: Product) =>
+	a.title.charCodeAt(0) - b.title.charCodeAt(0);
+const sortByPrice = (a: Product, b: Product) => {
+	const priceA = parseFloat(a.price.slice(1));
+	const priceB = parseFloat(b.price.slice(1));
+	return priceA - priceB;
+};
 
-export const sortProducts = createAsyncThunk(
-	'products/sortProducts',
-	async (isSorted: boolean) => {
-		const res = await fetch('/shopItems.json');
-		const data = await res.json();
-		const sorted = isSorted ? data?.items : data?.items?.reverse();
-		return sorted;
-	}
-);
+export const sortProducts = createAsyncThunk<
+	Product[],
+	{ allProduct: Product[]; sortProp: string }
+>('products/sortProducts', async ({ allProduct, sortProp }) => {
+	const sortedArr = allProduct;
+	if (sortProp === 'price') sortedArr.sort(sortByPrice);
+	else sortedArr.sort(sortByName);
+	return sortedArr;
+});
 
 const productSlice = createSlice({
 	name: 'products',
