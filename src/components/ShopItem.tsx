@@ -12,7 +12,11 @@ const ShopContent: React.FC<{ pageIds: EntityId[] }> = ({ pageIds }) => {
 	const cardItems = pageIds.map((item) => (
 		<ItemCard key={item} itemId={item} />
 	));
-	return <div className="shop-items">{cardItems}</div>;
+	return (
+		<div className="shop-items">
+			{cardItems.length === 0 ? 'No Matches' : cardItems}
+		</div>
+	);
 };
 
 const ItemCard: React.FC<{ itemId: EntityId }> = ({ itemId }) => {
