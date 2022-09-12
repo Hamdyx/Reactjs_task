@@ -5,12 +5,14 @@ import {
 } from '@reduxjs/toolkit';
 import { RootState } from '../configureStore';
 
-const sortByName = (a: Product, b: Product) =>
-	a.title.charCodeAt(0) - b.title.charCodeAt(0);
-const sortByPrice = (a: Product, b: Product) => {
+const sortByName = (a: Product, b: Product, isSorted: boolean) =>
+	isSorted
+		? b.title.charCodeAt(0) - a.title.charCodeAt(0)
+		: a.title.charCodeAt(0) - b.title.charCodeAt(0);
+const sortByPrice = (a: Product, b: Product, isSorted: boolean) => {
 	const priceA = parseFloat(a.price.slice(1));
 	const priceB = parseFloat(b.price.slice(1));
-	return priceA - priceB;
+	return isSorted ? priceB - priceA : priceA - priceB;
 };
 interface Product {
 	id: number;
@@ -23,7 +25,6 @@ interface Product {
 
 const productsAdapter = createEntityAdapter<Product>({
 	selectId: (product: Product) => `${product.title}-${product.id}`,
-	sortComparer: sortByName,
 });
 
 interface StateSlice {
@@ -64,17 +65,6 @@ export const fetchProducts = createAsyncThunk(
 		return itemsList;
 	}
 );
-
-export const sortProducts = createAsyncThunk<
-	Product[],
-	{ allProduct: Product[]; sortProp: string }
->('products/sortProducts', async ({ allProduct, sortProp }) => {
-	const sortedArr = allProduct;
-	if (sortProp === 'price') sortedArr.sort(sortByPrice);
-	else sortedArr.sort(sortByName);
-	return sortedArr;
-});
-
 const productSlice = createSlice({
 	name: 'products',
 	initialState,
@@ -82,6 +72,21 @@ const productSlice = createSlice({
 		searchProducts(state, action) {
 			const pattern = action.payload;
 			state.searchPattern = pattern;
+		},
+		sortProducts(state, action) {
+			const { allProduct, sortProp } = action.payload;
+			const sortedArr = allProduct;
+			console.log('sortProducts ========> state.sorted', state.sorted);
+			if (sortProp === 'price')
+				sortedArr.sort((a: Product, b: Product) =>
+					sortByPrice(a, b, state.sorted)
+				);
+			else
+				sortedArr.sort((a: Product, b: Product) =>
+					sortByName(a, b, state.sorted)
+				);
+			productsAdapter.setAll(state, sortedArr);
+			state.sorted = !state.sorted;
 		},
 	},
 	extraReducers: (builder) => {
@@ -97,24 +102,11 @@ const productSlice = createSlice({
 			productsAdapter.setAll(state, action.payload);
 			state.loading = false;
 		});
-		// ********************** sortProducts **********************
-		builder.addCase(sortProducts.pending, (state, action) => {
-			state.loading = true;
-		});
-		builder.addCase(sortProducts.rejected, (state, action) => {
-			state.loading = false;
-			state.error = true;
-		});
-		builder.addCase(sortProducts.fulfilled, (state, action) => {
-			productsAdapter.setAll(state, action.payload);
-			state.loading = false;
-			state.sorted = !state.sorted;
-		});
 	},
 });
 
 export default productSlice.reducer;
-export const { searchProducts } = productSlice.actions;
+export const { searchProducts, sortProducts } = productSlice.actions;
 
 export const {
 	selectAll: selectAllProducts,

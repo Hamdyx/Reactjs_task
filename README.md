@@ -14,6 +14,8 @@ The user also can click on the filter button on the master page to sort by name 
 - various products displayed in different pages
 - add as many products into the cart and see a badge with the total number
 - add different products to favourite or watchlist
+- sort products in ascending or descending order by name or price
+- search for specific products with name
 - responsive design
 
 ## In-Development

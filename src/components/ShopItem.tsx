@@ -12,7 +12,6 @@ const ShopContent: React.FC<{ pageIds: EntityId[] }> = ({ pageIds }) => {
 	const cardItems = pageIds.map((item) => (
 		<ItemCard key={item} itemId={item} />
 	));
-	console.log('ShopContent =====> cardItems', cardItems);
 	return (
 		<div className="shop-items">
 			{cardItems.length === 0 ? 'No Matches' : cardItems}

@@ -33,9 +33,6 @@ const ShopPage: React.FC = () => {
 		const pageContent = filtered.slice(pageStart, pageEnd);
 		setPageIds(pageContent);
 	};
-
-	useEffect(() => {}, [productIds]);
-	useEffect(() => {}, [filtered]);
 	useEffect(() => {
 		let _filtered = [...productIds];
 		if (searchPattern) {
@@ -44,7 +41,7 @@ const ShopPage: React.FC = () => {
 			);
 
 			setFiltered(_filtered);
-		}
+		} else setFiltered([...productIds]);
 		setPageIds(_filtered.slice(0, 12));
 	}, [productIds, searchPattern]);
 	return (
@@ -85,11 +82,7 @@ const FilterRow: React.FC = () => {
 			<Search placeholder="Search" onSearch={onSearch} />
 
 			<div className="filter_section">
-				<Select
-					defaultValue="Name"
-					style={{ width: 120 }}
-					onChange={handleSortChange}
-				>
+				<Select defaultValue="Name" onSelect={handleSortChange}>
 					<Option value="price">Price</Option>
 					<Option value="Name">Name</Option>
 				</Select>
