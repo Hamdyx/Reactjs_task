@@ -10,7 +10,6 @@ const ProductCarousel: React.FC = () => {
 	}, []);
 
 	const onChange = (currentSlide: number) => {
-		console.log(currentSlide);
 		setActiveItem(currentSlide);
 	};
 
