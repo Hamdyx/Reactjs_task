@@ -4,6 +4,7 @@
 	padding: 0 6rem;
 	height: 100%;
 	gap: 20px;
+	overflow: hidden; //* mobile menu breaks layout
 	@media (max-width: 1200px) {
 		padding: 0 2.125rem;
 	}
@@ -13,8 +14,7 @@
 	}
 	@media (max-width: 768px) {
 		@include verticalPadding(2rem, 2.5rem);
-		flex-direction: column;
-		gap: 30px;
+		justify-content: space-between;
 	}
 	.logo {
 		@media (max-width: 768px) {
@@ -37,6 +37,58 @@
 					font-size: 0.75rem;
 				}
 			}
+		}
+	}
+	.nav-collapse {
+		.ant-menu-submenu {
+			position: relative;
+			width: 90vw;
+			inset-inline-start: -120px;
+		}
+		.ant-menu-item {
+			margin: 2rem 0;
+			.ant-menu-title-content {
+				@include flex();
+				gap: 5px;
+				@include mainFont(30px, 45px, 0.2px, #23a6f0);
+				.anticon {
+					svg {
+						width: 28px;
+						height: 28px;
+					}
+				}
+			}
+			&.nav-item {
+				.ant-menu-title-content {
+					@include mainFont(30px, 45px, 0.2px, #737373);
+				}
+			}
+		}
+
+		.ant-menu-submenu-title {
+			padding: 0;
+		}
+
+		.ant-menu {
+			background: none;
+			.ant-menu-item {
+				padding: 0 !important;
+				text-align: center;
+				justify-content: center;
+				&.ant-menu-item-selected {
+					background: none;
+				}
+				.ant-menu-item-icon {
+					flex: 1;
+					width: 100%;
+				}
+			}
+		}
+		.ant-dropdown-menu-item {
+			@include flex();
+			text-align: center;
+			@include mainFont(30px, 45px, 0.2px, #737373);
+			text-transform: capitalize;
 		}
 	}
 	& > .authenticate {
@@ -66,7 +118,7 @@
 			color: #23a6f0;
 		}
 		.item {
-			@include mainFont(12px, 16px, 0.2, #23a6f0);
+			@include mainFont(12px, 16px, 0.2px, #23a6f0);
 			gap: 5px;
 			padding: 0.25rem;
 			svg {
@@ -146,4 +198,12 @@
 			}
 		}
 	}
+}
+.ant-dropdown-trigger {
+	border: 0;
+	background: none;
+}
+.ant-dropdown {
+	width: 100%;
+	left: 0 !important;
 }
