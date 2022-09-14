@@ -7,6 +7,7 @@ import {
 import { Typography } from 'antd';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/configureStore';
+import UserActionItem from './UserActionItem';
 const { Paragraph } = Typography;
 
 const UserActions: React.FC = () => {
@@ -14,15 +15,13 @@ const UserActions: React.FC = () => {
 	return (
 		<div className="actions">
 			<Paragraph className="item">
-				<SearchOutlined />
+				<UserActionItem Icon={SearchOutlined} />
 			</Paragraph>
 			<Paragraph className="item">
-				<ShoppingCartOutlined />
-				{cart?.length}
+				<UserActionItem Icon={ShoppingCartOutlined} text={cart?.length} />
 			</Paragraph>
 			<Paragraph className="item">
-				<HeartOutlined />
-				{favourite?.length}
+				<UserActionItem Icon={HeartOutlined} text={favourite?.length} />
 			</Paragraph>
 		</div>
 	);
