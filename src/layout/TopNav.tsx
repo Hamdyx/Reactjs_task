@@ -1,57 +1,44 @@
-import React from 'react';
-import {
-	UserOutlined,
-	SearchOutlined,
-	ShoppingCartOutlined,
-	HeartOutlined,
-} from '@ant-design/icons';
+import React, { useRef } from 'react';
 import { Layout, Menu, Typography } from 'antd';
-import { useSelector } from 'react-redux';
-import { RootState } from '../store/configureStore';
-const { Paragraph } = Typography;
+import useWidth from '../helpers/hooks/useWidth';
+import AuthActions from './header/AuthActions';
+import UserActions from './header/UserActions';
+import CustomDropDown from './header/CustomDropDown';
+import { navLinks } from '../content/fields';
 const { Header } = Layout;
 
 const TopNav: React.FC = () => {
-	const { cart, favourite } = useSelector((state: RootState) => state?.user);
-	const navItems = ['home', 'shop', 'about', 'blog', 'contact', 'pages'].map(
-		(key) => ({
-			key,
-			label: `${key}`,
-			className: 'nav-items',
-		})
-	);
+	const { width } = useWidth();
+	const headerRef = useRef<HTMLDivElement>(null);
+	const navItems = navLinks.map((label: string, key) => ({
+		key,
+		label,
+		type: undefined,
+		className: 'nav-item',
+	}));
+
 	return (
-		<Header className="header">
+		<Header className="header" ref={headerRef}>
 			<Typography.Title level={3} className="logo">
 				Bandage
 			</Typography.Title>
-			<Menu
-				theme="light"
-				mode="horizontal"
-				defaultSelectedKeys={['1']}
-				items={navItems}
-			/>
-			<div className="authenticate">
-				<Paragraph className="login">
-					<UserOutlined />
-					Login
-				</Paragraph>
-				<Paragraph>/</Paragraph>
-				<Paragraph>Register</Paragraph>
-			</div>
-			<div className="actions">
-				<Paragraph className="item">
-					<SearchOutlined />
-				</Paragraph>
-				<Paragraph className="item">
-					<ShoppingCartOutlined />
-					{cart?.length}
-				</Paragraph>
-				<Paragraph className="item">
-					<HeartOutlined />
-					{favourite?.length}
-				</Paragraph>
-			</div>
+
+			{width > 768 ? (
+				<>
+					<Menu
+						theme="light"
+						mode="horizontal"
+						defaultSelectedKeys={['1']}
+						items={navItems}
+					/>
+					<AuthActions />
+					<UserActions />
+				</>
+			) : (
+				<>
+					<CustomDropDown navItems={navItems} />
+				</>
+			)}
 		</Header>
 	);
 };

@@ -76,7 +76,6 @@ const productSlice = createSlice({
 		sortProducts(state, action) {
 			const { allProduct, sortProp } = action.payload;
 			const sortedArr = allProduct;
-			console.log('sortProducts ========> state.sorted', state.sorted);
 			if (sortProp === 'price')
 				sortedArr.sort((a: Product, b: Product) =>
 					sortByPrice(a, b, state.sorted)

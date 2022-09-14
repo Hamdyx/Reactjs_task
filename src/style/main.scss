@@ -28,6 +28,10 @@ code {
 		&.logo {
 			padding: 0 20px;
 			@include mainFont(24px, 32px, 0.1px, #252b42);
+			@media (max-width: 992px) {
+				font-size: 1rem;
+				padding: 0 0.5rem;
+			}
 		}
 	}
 }
