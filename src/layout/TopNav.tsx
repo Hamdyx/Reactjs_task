@@ -10,6 +10,8 @@ import {
 	ShoppingCartOutlined,
 	HeartOutlined,
 } from '@ant-design/icons';
+import { useSelector } from 'react-redux';
+import { RootState } from '../store/configureStore';
 const { Header } = Layout;
 
 type NavItem = {
@@ -22,7 +24,6 @@ type NavItem = {
 const TopNav: React.FC = () => {
 	const { width } = useWidth();
 	const headerRef = useRef<HTMLDivElement>(null);
-	console.log({ width });
 	const navItems = ['home', 'shop', 'about', 'blog', 'contact', 'pages'].map(
 		(label: string, key) => ({
 			key,
@@ -59,6 +60,7 @@ const TopNav: React.FC = () => {
 };
 
 const CustomDropDown: React.FC<{ navItems: NavItem[] }> = ({ navItems }) => {
+	const { cart, favourite } = useSelector((state: RootState) => state?.user);
 	type MenuItem = Required<MenuProps>['items'][number];
 
 	function getItem(
@@ -92,21 +94,28 @@ const CustomDropDown: React.FC<{ navItems: NavItem[] }> = ({ navItems }) => {
 						'6',
 						null
 					),
-					getItem(<SearchOutlined />, '7', null),
-					getItem(<ShoppingCartOutlined />, '8', null),
-					getItem(<HeartOutlined />, '9', null),
+					getItem(<SearchOutlined />, '7'),
+					getItem(
+						<>
+							<ShoppingCartOutlined /> {cart?.length}
+						</>,
+						'8'
+					),
+					getItem(
+						<>
+							<HeartOutlined /> {favourite?.length}
+						</>,
+						'9'
+					),
 				],
 				'group'
 			),
 		]),
 	];
-	const onClick: MenuProps['onClick'] = (e) => {
-		console.log('click ', e);
-	};
+
 	return (
 		<>
 			<Menu
-				onClick={onClick}
 				defaultSelectedKeys={['1']}
 				mode="inline"
 				items={items}
